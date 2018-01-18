@@ -1,13 +1,15 @@
 package com.penafort.practiceset2;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.TextView;
 
 
 
-        import android.os.Bundle;
-        import android.support.v7.app.AppCompatActivity;
-        import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    int teamACounter=0;
+    int teamBCounter=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,27 +23,55 @@ public class MainActivity extends AppCompatActivity {
      * how these work yet. We'll be covering them in lesson 3.
      */
 
-    public void display(String text) {
-        TextView t = (TextView) findViewById(R.id.display_text_view);
-        t.setText(text);
+    public void displayForTeamA(int point) {
+        String value=String.valueOf(point);
+        TextView t = findViewById(R.id.team_a_score_value);
+        t.setText(value);
+    }
+    public void displayForTeamB(int point){
+        String value=String.valueOf(point);
+        TextView t = findViewById(R.id.team_b_score_value);
+        t.setText(value);
     }
 
-    public void display(int text) {
-        TextView t = (TextView) findViewById(R.id.display_text_view);
-        t.setText(text + "");
+    private void addToTeamA(int value){
+        teamACounter+=value;
+    }
+    private void addToTeamB(int value){
+        teamBCounter+=value;
+    }
+    public void addThreeTeamA(View v){
+        addToTeamA(3);
+        displayForTeamA(teamACounter);
+    }
+    public void addTwoTeamA(View v){
+        addToTeamA(2);
+        displayForTeamA(teamACounter);
+    }
+    public void addOneTeamA(View v){
+        addToTeamA(1);
+        displayForTeamA(teamACounter);
+    }
+    public void addThreeTeamB(View v){
+        addToTeamB(3);
+        displayForTeamB(teamBCounter);
+    }
+    public void addTwoTeamB(View v){
+        addToTeamB(2);
+        displayForTeamB(teamBCounter);
+    }
+    public void addOneTeamB(View v){
+        addToTeamB(1);
+        displayForTeamB(teamBCounter);
+    }
+    public void reset(View v){
+        teamACounter=0;
+        teamBCounter=0;
+        displayForTeamA(teamACounter);
+        displayForTeamB(teamACounter);
     }
 
-    public void display1(String text) {
-        display(text);
-    }
 
-    public void display2(String text) {
-        TextView t = (TextView) findViewById(R.id.display_text_view_2);
-        t.setText(text);
-    }
 
-    public void display3(String text) {
-        TextView t = (TextView) findViewById(R.id.display_text_view_3);
-        t.setText(text);
-    }
+
 }
